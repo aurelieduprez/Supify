@@ -2,20 +2,11 @@
     ViewData["Title"] = "Music player";
 }
 <script src="https://unpkg.com/wavesurfer.js"></script>
+<script src="~/js/site.js"></script>
 
 <div class="text-center" id="index_page">
     <h1 class="display-4">Welcome to Supify</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">testastos</a>.</p>
-    <div id="waveform">
-    </div>
 </div>
-<script>
-        var wavesurfer = WaveSurfer.create({
-            container: '#waveform'
-        });
-        wavesurfer.load('/music/theWeekend.mp3');
-        wavesurfer.on('ready', function () {
-            wavesurfer.play();
-        });
-</script>
+
 
