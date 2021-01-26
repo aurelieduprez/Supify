@@ -65,6 +65,7 @@ body {
     background-repeat: no-repeat;
     background-position-x:top left;
     background-size:100%;
+    background-attachment: fixed;
 }
 .footer {
   position: absolute;
@@ -78,7 +79,7 @@ body {
 #content{
     background-color:white;
     width: 90%;
-    height: 500px;
+    height: 1100px;
 }
 
 
