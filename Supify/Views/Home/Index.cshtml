@@ -1,12 +1,21 @@
 ﻿@{
     ViewData["Title"] = "Music player";
 }
-<body>
-    <link rel="stylesheet" href="../wwwroot/css/index.css" />
-    <div class="text-center" id="index_page">
-        <div id="content">
-            <h1 class="display-4">Welcome to Supify</h1>
-            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">test</a>.</p>
-        </div>
+<script src="https://unpkg.com/wavesurfer.js"></script>
+
+<div class="text-center" id="index_page">
+    <h1 class="display-4">Welcome to Supify</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">testastos</a>.</p>
+    <div id="waveform">
     </div>
-</body>
+</div>
+<script>
+        var wavesurfer = WaveSurfer.create({
+            container: '#waveform'
+        });
+        wavesurfer.load('theWeekend.mp3');
+        wavesurfer.on('ready', function () {
+            wavesurfer.play();
+        });
+</script>
+
