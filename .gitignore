@@ -355,3 +355,7 @@ MigrationBackup/
 *.cache
 
 Supify/obj/Debug/netcoreapp3.1/
+
+*.dll
+
+Supify/bin/Debug/netcoreapp3.1/
