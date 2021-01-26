@@ -30,10 +30,11 @@ namespace Supify
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -39,7 +39,7 @@ namespace Supify.Controllers
         public IActionResult Playlist()
         {
 
-            if (User.Identity.IsAuthenticated==false)
+            if (User.Identity.IsAuthenticated == false)
             {
                 return Redirect("/Home");
 
