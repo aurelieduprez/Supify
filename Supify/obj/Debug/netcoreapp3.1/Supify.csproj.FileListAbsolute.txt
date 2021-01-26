@@ -90,3 +90,5 @@ C:\Users\Lili\Desktop\3ASPC\Supify\Supify\obj\Debug\netcoreapp3.1\Supify.csproj.
 C:\Users\Lili\Desktop\3ASPC\Supify\Supify\obj\Debug\netcoreapp3.1\Supify.dll
 C:\Users\Lili\Desktop\3ASPC\Supify\Supify\obj\Debug\netcoreapp3.1\Supify.pdb
 C:\Users\Lili\Desktop\3ASPC\Supify\Supify\obj\Debug\netcoreapp3.1\Supify.genruntimeconfig.cache
+C:\Users\Lili\Desktop\3ASPC\Supify\Supify\obj\Debug\netcoreapp3.1\Razor\Views\Home\Playlist.cshtml.g.cs
+C:\Users\Lili\Desktop\3ASPC\Supify\Supify\obj\Debug\netcoreapp3.1\Razor\Views\Playlist\playlist.cshtml.g.cs

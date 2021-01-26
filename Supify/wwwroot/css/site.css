@@ -27,7 +27,7 @@ a {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
   html {
@@ -59,8 +59,12 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: url(../background.png);
+    background-repeat: no-repeat;
+    background-position-x:top left;
+    background-size:100%;
 }
 .footer {
   position: absolute;
@@ -68,4 +72,13 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+  background-color:white;
 }
+
+#content{
+    background-color:white;
+    width: 90%;
+    height: 500px;
+}
+
+

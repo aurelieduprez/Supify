@@ -20,12 +20,35 @@ namespace Supify.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return Redirect("/Home/Playlist");
+
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Playlist()
+        {
+
+            if (User.Identity.IsAuthenticated==false)
+            {
+                return Redirect("/Home");
+
+            }
+            else
+            {
+                return View();
+            }
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
