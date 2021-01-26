@@ -17,11 +17,14 @@ a {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+.btn-outline-dark:visited{
+    color:red;
+}
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
@@ -83,14 +86,5 @@ body {
 }
 
 
-.controls {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
+
 
