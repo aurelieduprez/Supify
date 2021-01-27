@@ -79,6 +79,20 @@ namespace Supify.Controllers
             }
 
         }
+        public IActionResult deletePlaylist()
+        {
+
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return Redirect("/Home");
+
+            }
+            else
+            {
+                return View();
+            }
+
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
