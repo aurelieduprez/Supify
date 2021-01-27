@@ -1,0 +1,32 @@
+﻿@model Supify.Models.Playlist
+@{
+    ViewData["Title"] = "Add Playlist";
+    var playlist = ViewData["Playlist"] as Playlist;
+}
+
+
+
+<h1 class="display-4">Create your own Playlist</h1>
+<br /><br /><br /><br />
+<div>
+    @if (playlist != null)
+    {
+        <div class="created-playlist">
+            <p>@playlist.Id</p>
+            <p>@playlist.User</p>
+            <p>@playlist.Name</p>
+            <p>Playlist has been created!</p>
+        </div>}
+    <fieldset>
+        @using (Html.BeginForm())
+        {
+            <p>
+                @Html.LabelFor(x => x.Name)
+                @Html.EditorFor(x => x.Name)
+            </p>
+            <p>
+                <button type="submit">Create playlist</button>
+            </p>}
+
+    </fieldset>
+</div>

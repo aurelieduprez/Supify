@@ -22,7 +22,7 @@ namespace Supify.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return Redirect("/Home/Playlist");
+                return Redirect("/Home/Manager");
 
             }
             else
@@ -36,7 +36,36 @@ namespace Supify.Controllers
             return View();
         }
 
-        public IActionResult Playlist()
+        public IActionResult Manager()
+        {
+
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return Redirect("/Home");
+
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+        public IActionResult createPlaylist()
+        {
+
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return Redirect("/Home");
+
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
+        public IActionResult editPlaylist()
         {
 
             if (User.Identity.IsAuthenticated == false)
