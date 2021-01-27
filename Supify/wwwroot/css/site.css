@@ -17,9 +17,6 @@ a {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
-.btn-outline-dark:visited{
-    color:red;
-}
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
@@ -83,6 +80,11 @@ body {
     background-color:white;
     width: 90%;
     height: 1100px;
+}
+
+.custom {
+    width: 15% !important;
+
 }
 
 
