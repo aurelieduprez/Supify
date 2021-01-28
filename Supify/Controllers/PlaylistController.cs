@@ -1,0 +1,111 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Supify.Models;
+using Supify.Data;
+
+namespace supwave.Controllers
+{
+    [Authorize]
+    public class PlaylistController : Controller
+    {
+        private readonly ApplicationDbContext _database;
+        public PlaylistController(ApplicationDbContext database)
+        {
+            _database = database;
+        }
+
+ /*       [HttpGet, Route("createPlaylist")]
+        public IActionResult createPlaylist()
+        {
+
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return Redirect("/Home");
+
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+
+        [HttpPost, Route("createPlaylist")]*/
+        public IActionResult createPlaylist(Playlist playlist)
+        {
+
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return Redirect("/Home");
+
+            }
+            else
+            {
+                if (playlist.Name != null) 
+                { 
+                playlist.User = User.Identity.Name;
+                _database.Playlist.Add(playlist);
+                _database.SaveChanges();
+                }
+
+            ViewData["Playlist"] = playlist;
+
+                return View();
+            }
+
+        }
+        public IActionResult editPlaylist(Playlist playlist)
+        {
+
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return Redirect("/Home");
+
+            }
+            else
+            {
+
+                return View();
+            }
+
+
+        }
+        public IActionResult deletePlaylist()
+        {
+
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return Redirect("/Home");
+
+            }
+            else
+            {
+                return View();
+            }
+
+
+        }
+        public IActionResult allPlaylist(Playlist playlist)
+        {
+
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return Redirect("/Home");
+
+            }
+            else
+            {
+                var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name)).ToList();
+                ViewData["Playlists"] = playlists;
+                return View();
+
+            }
+
+
+        }
+    }
+}

@@ -1,0 +1,25 @@
+﻿@{ ViewData["Title"] = "Playlists";
+                var playlists = ViewData["Playlists"] as List<Playlist>; }
+
+<div class="text-center">
+
+    <h1 class="display-4">Here are your playlists</h1>
+    @if (playlists.Any())
+    {
+<div class="playlists">
+    @foreach (var playlist in playlists)
+    {
+<div class="playlist">
+    <p>@playlist.Id # @playlist.User # @playlist.Name</p>
+</div>                }
+</div> }
+            else
+            {
+<div class="playlists">
+    <div>
+        <p>You don't have any playlist</p>
+        <a href="createPlaylist"><button class="btn btn-outline-dark">Create a Playlist</button></a>
+    </div>
+</div>}
+
+</div>

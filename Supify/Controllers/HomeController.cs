@@ -50,21 +50,6 @@ namespace Supify.Controllers
             }
 
         }
-        public IActionResult createPlaylist()
-        {
-
-            if (User.Identity.IsAuthenticated == false)
-            {
-                return Redirect("/Home");
-
-            }
-            else
-            {
-                return View();
-            }
-
-        }
-
         public IActionResult editPlaylist()
         {
 
