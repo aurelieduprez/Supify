@@ -14,7 +14,7 @@ var wavesurfer = WaveSurfer.create({
     partialRender: true
 });
 //load music
-wavesurfer.load('/music/onlyYou.mp3');
+wavesurfer.load('/music/theWeekend.mp3');
 wavesurfer.on('ready', function () {
     wavesurfer.setProgressColor("#415a77");
     wavesurfer.setWaveColor("#778da9");
