@@ -30,3 +30,30 @@ var onChangeVolume = function (e) {
     console.log(e.target.value);
 };
 volumeInput.addEventListener('input', onChangeVolume);
+
+
+/*remove stylesheet with dark theme switch
+$(function () {
+    var linkEl;
+    $("#switch").click(function () {
+        if (!linkEl) {
+            linkEl = $('<link rel="stylesheet" type="text/css" href="../wwwroot/css/darktheme.css />')
+                .appendTo('head')[0];
+        }
+        else if (linkEl.sheet) {
+            linkEl.sheet.disabled = !linkEl.sheet.disabled;
+        }
+    });
+});*/
+
+
+console.log("zebi");
+$('#switch').click(function () {
+    if ($(this).is(':checked')) {
+        alert('It has been checked!');
+        
+    } else {
+        alert('Our checkbox is not checked!');
+        
+    }
+});

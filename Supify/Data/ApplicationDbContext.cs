@@ -37,7 +37,7 @@ namespace Supify.Data
                 // taille maxi
                 n.Property(p => p.Name).HasMaxLength(64);
 
-                // clé étrangère (playlist id)
+                // clé étrangère (song id)
                 n.HasMany<Song>()
                 .WithOne()
                 .HasForeignKey(fk => fk.PlaylistId)

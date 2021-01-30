@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Supify.Models;
 using Supify.Data;
 
-namespace supwave.Controllers
+namespace Supify.Controllers
 {
     [Authorize]
     public class PlaylistController : Controller

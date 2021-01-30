@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Supify.Models;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Supify.Controllers
 {
@@ -31,11 +27,7 @@ namespace Supify.Controllers
             }
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
+      
         public IActionResult Manager()
         {
 
