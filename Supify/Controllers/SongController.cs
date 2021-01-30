@@ -56,8 +56,8 @@ namespace Supify.Controllers
         }
 
 
-        [HttpGet, Route("delete-song")]
-        public IActionResult Delete()
+        [HttpGet, Route("deleteSong")]
+        public IActionResult deleteSong()
         {
             // Retrive all user's playlist from the database
             var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name)).ToList();
@@ -71,27 +71,17 @@ namespace Supify.Controllers
 
 
 
-        [HttpPost, Route("delete-song")]
-        public IActionResult Delete(int Id)
+        [HttpPost, Route("deleteSong")]
+        public IActionResult deleteSong(int Id)
         {
-            try
-            {
+
                 var song = _database.Song.First(s => s.Id == Id);
-
-                // DELETE SONG FILE
-                FileInfo songfile = new FileInfo(song.Path);
-                songfile.Delete();
-
-                // REMOVE DATABASE RECORD
                 _database.Song.Attach(song);
                 _database.Song.Remove(song);
                 _database.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                return Redirect("/");
-            }
-            return Redirect("/");
+            
+
+            return Redirect("/Player");
         }
 
         [HttpGet, Route("player")]

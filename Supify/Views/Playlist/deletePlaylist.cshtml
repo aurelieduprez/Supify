@@ -1,31 +1,31 @@
 ﻿@model Supify.Models.Playlist
 @{
     ViewData["Title"] = "Add Playlist";
-
     var playlists = ViewData["Playlists"] as List<Playlist>;
 }
 
 
 
-<h1 class="display-4"> Delete one of your playlists</h1>
+<h1 class="display-4 text-center"> Delete your playlists</h1>
+<br /><br /><br /><br />
 
 @if (playlists.Any())
 {
-    <div class="playlists">
-        @foreach (var playlist in playlists)
-        {
-            <form action="../Playlist/deletePlaylist" method="post">
-                <label for="Id">@playlist.Name</label>
-                <input style="display: none;" id="Id" name="Id" type="number" value="@playlist.Id">
-                <button type="submit">Delete</button>
-            </form>}
+<div>
+    @foreach (var playlist in playlists)
+    {
+<form action="/Playlist/deletePlaylist" method="post">
+    → <label for="Id">@playlist.Name</label>
+    <input style="display: none;" id="Id" name="Id" type="number" value="@playlist.Id">
+    <button type="submit" class="btn btn-outline-dark">Delete <img src="~/trash.png" style="width:15px;" /></button>
+    <br /><br/>
+</form>}
+</div> }
+            else
+            {
+<div class="text-center">
+    <div class="playlist-empty">
+        <p>You don't have any playlist :(</p>
+        <a asp-controller="Playlist" asp-action="createPlaylist"><button class="btn btn-outline-dark">Create your first Playlist ! </button></a>
     </div>
-    <a href="allPlaylist"><button class="btn btn-outline-dark">List of your Playlists</button></a>}
-
-else
-{
-    <div class="playlists">
-        <p>You don't have any playlist</p>
-        <a href="allPlaylist"><button class="btn btn-outline-dark">List of your Playlists</button></a>
-
-    </div>}
+</div>}

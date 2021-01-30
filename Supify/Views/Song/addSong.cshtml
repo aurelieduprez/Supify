@@ -5,13 +5,13 @@
 
 
 
-    <h1>Add Song</h1>
+    <h1 class="display-4 text-center">Add Song</h1> <br /><br /><br />
     @if (playlists.Any())
     {
-<div class="playlists">
+<div class="text-center">
     <form enctype="multipart/form-data" method="post">
         <label for="playlistId">Playlist:</label>
-        <select id="playlistId" name="playlistId" type="number">
+        <select id="playlistId" name="playlistId" type="number" class="custom-select" style="width:10%;">
             @foreach (var playlist in playlists)
             {
 <option value="@playlist.Id">@playlist.Name</option>}
@@ -21,9 +21,9 @@
         <input type="text" name="name" id="name">
 
         <label for="song">Select song to upload:</label>
-        <input type="file" name="file" id="file">
+        <input type="file" name="file" id="file" class="btn">
 
-        <button type="submit">Add Song</button>
+        <button type="submit" class="btn btn-outline-dark">Add Song</button>
     </form>
 </div> }
             else

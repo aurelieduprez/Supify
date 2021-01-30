@@ -1,34 +1,43 @@
-﻿
-@{ ViewData["Title"] = "Upload Song";
-                var playlists = ViewData["Playlists"] as List<Playlist>; }
+﻿@model Supify.Models.Playlist
+@{ ViewData["Title"] = "Delete Song";
+                var playlists = ViewData["Playlists"] as List<Playlist>;
+                var songs = ViewData["songs"] as List<Song>; }
 
 
 
 
-    <h1>Add Song</h1>
+<div>
+    <h1 class="display-4 text-center">Delete a song from a playlist</h1>
+    <br /><br /><br /><br />
     @if (playlists.Any())
     {
-<div class="playlists">
-    <form enctype="multipart/form-data" method="post">
+<div class="text-center">
+    <form method="post">
         <label for="playlistId">Playlist:</label>
-        <select id="playlistId" name="playlistId" type="number">
+        <select id="playlistId" name="playlistId" type="number" class="custom-select" style="width:10%">
             @foreach (var playlist in playlists)
             {
 <option value="@playlist.Id">@playlist.Name</option>}
         </select>
 
-        <label for="song">Song name:</label>
-        <input type="text" name="name" id="name">
+        <label for="Id">Song:</label>
+        <select id="Id" name="Id" type="number" class="custom-select" style="width:10%">
+            @foreach (var song in songs)
+            {
+<option value="@song.Id">@song.Name</option>}
+        </select>
 
-        <label for="song">Select song to upload:</label>
-        <input type="file" name="file" id="file">
-
-        <button type="submit">Add Song</button>
+        <button type="submit" class="btn btn-outline-dark">Delete  <img src="~/trash.png" style="width:15px;" /></button>
     </form>
+
 </div> }
             else
             {
-<p>To add a song you need a playlist!</p>
-                <a href="createPlaylist"></a>}
+<div class="playlists">
+    <div class="playlist-empty">
+        <p>You don't have any playlist</p>
+        <a href="/Home/createPlaylist"><button class="btn btn-outline-dark">Add a song to a playlist</button></a>
+    </div>
+</div>}
 
-
+</div>

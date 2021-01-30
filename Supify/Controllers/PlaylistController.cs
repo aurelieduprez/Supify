@@ -58,22 +58,7 @@ namespace Supify.Controllers
             }
 
         }
-        public IActionResult editPlaylist(Playlist playlist)
-        {
-
-            if (User.Identity.IsAuthenticated == false)
-            {
-                return Redirect("/Home");
-
-            }
-            else
-            {
-
-                return View();
-            }
-
-
-        }
+        
         public IActionResult deletePlaylist(Playlist playlist)
         {
 

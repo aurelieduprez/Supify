@@ -6,17 +6,10 @@
 
 
 
-<h1 class="display-4">Create your own Playlist</h1>
+<h1 class="display-4 text-center">Create your own Playlist</h1>
 <br /><br /><br /><br />
                   <div>
-                      @if (playlist.Name != null)
-                      {
-                          <div class="created-playlist">
-                              <p>@playlist.Id</p>
-                              <p>@playlist.User</p>
-                              <p>@playlist.Name</p>
-                              <p>Your playlist has been created !</p>
-                          </div>}
+
                       <fieldset>
                           @using (Html.BeginForm())
                           {
@@ -26,8 +19,15 @@
                               </p>
                               <p>
                                   <button type="submit" class="btn btn-outline-dark">Create your playlist</button>
-
                               </p>}
                       </fieldset>
-                      <a href="editPlaylist"><button class="btn btn-outline-dark">Edit a Playlist</button></a>
+
+                      <a asp-controller="Song" asp-action="addSong"><button class="btn btn-outline-dark">Add music to your playlist</button></a>
+
+                      @if (playlist.Name != null)
+                      {
+                          <div class="text-center">
+
+                              <p>Your playlist has been created !</p>
+                          </div>}
                   </div>
