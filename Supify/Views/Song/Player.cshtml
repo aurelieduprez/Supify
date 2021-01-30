@@ -1,0 +1,48 @@
+﻿@model Supify.Models.Playlist
+@{ ViewData["Title"] = "Player";
+                var playlists = ViewData["Playlists"] as List<Playlist>;
+                var songs = ViewData["songs"] as List<Song>; }
+
+
+<h1>Player</h1>
+
+<div class="player">
+    <div id="waveform"> </div>
+
+    <div class="controls">
+        <button id="btn-back" disabled="disabled">Back</button>
+        <button id="btn-backward" disabled="disabled">Backward</button>
+        <button id="btn-playpause" disabled="disabled">Play / Pause</button>
+        <button id="btn-forward" disabled="disabled">Forward</button>
+        <button id="btn-next" disabled="disabled">Next</button>
+        <button id="btn-mute">Mute</button>
+    </div>
+</div>
+
+<div class="playlist">
+    <div class="playlist-selector">
+        <p>Playlist:</p>
+        <select id="playlistId">
+            @foreach (var playlist in playlists)
+            {
+<option value="@playlist.Id">@playlist.Name</option>            }
+        </select>
+    </div>
+
+
+    <ul id="songs">
+        @foreach (var song in songs)
+        {
+<li>
+    <p class="name">@song.Name</p>
+    <button onclick="loadToPlayer('@song.Path')">Load</button>
+</li>}
+    </ul>
+</div>
+
+
+<script src="https://unpkg.com/wavesurfer.js"></script>
+<script src="/js/player.js"></script>
+
+
+

@@ -1,0 +1,34 @@
+﻿
+@{ ViewData["Title"] = "Upload Song";
+                var playlists = ViewData["Playlists"] as List<Playlist>; }
+
+
+
+
+    <h1>Add Song</h1>
+    @if (playlists.Any())
+    {
+<div class="playlists">
+    <form enctype="multipart/form-data" method="post">
+        <label for="playlistId">Playlist:</label>
+        <select id="playlistId" name="playlistId" type="number">
+            @foreach (var playlist in playlists)
+            {
+<option value="@playlist.Id">@playlist.Name</option>}
+        </select>
+
+        <label for="song">Song name:</label>
+        <input type="text" name="name" id="name">
+
+        <label for="song">Select song to upload:</label>
+        <input type="file" name="file" id="file">
+
+        <button type="submit">Add Song</button>
+    </form>
+</div> }
+            else
+            {
+<p>To add a song you need a playlist!</p>
+                <a href="createPlaylist"></a>}
+
+

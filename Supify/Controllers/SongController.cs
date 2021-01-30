@@ -16,11 +16,11 @@ namespace Supify.Controllers
     public class SongController : Controller
     {
         private readonly ApplicationDbContext _database;
-        private IHostingEnvironment _env;
-        public SongController(ApplicationDbContext database, IHostingEnvironment env)
+
+        public SongController(ApplicationDbContext database)
         {
             _database = database;
-            _env = env;
+
         }
 
         [HttpGet, Route("addSong")]
@@ -35,7 +35,7 @@ namespace Supify.Controllers
         [HttpPost, Route("addSong")]
         public IActionResult addSong(IFormFile file, string name, int playlistId)
         {
-            var songPath = "/music/" + DateTime.Now.Ticks.ToString("X2").Substring(7) + name + ".mp3";
+            var songPath = "/music/"  + name + ".mp3";
 
             Song song = new Song()
             {
