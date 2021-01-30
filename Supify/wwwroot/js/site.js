@@ -63,16 +63,23 @@ var isPlaying = false;
 // Create the wave player
 var wavesurfer = WaveSurfer.create({
     container: '#waveform',
-    waveColor: '#7f8c8d',
-    progressColor: '#2980b9',
-    cursorColor: '#4353FF',
     barWidth: 5,
-    barRadius: 2,
+    barRadius: 5,
     cursorWidth: 0,
     height: 200,
     hideScrollbar: true,
     partialRender: true
 });
+
+
+// volume cursor
+document.querySelector('#volume').value = wavesurfer.backend.getVolume();
+var volumeInput = document.querySelector('#volume');
+var onChangeVolume = function (e) {
+    wavesurfer.setVolume(e.target.value);
+    console.log(e.target.value);
+};
+volumeInput.addEventListener('input', onChangeVolume);
 
 // Play Pause function
 function playpause() {
@@ -91,7 +98,9 @@ buttons.mute.addEventListener("click", () => { wavesurfer.setMute(!wavesurfer.ge
 // Execute every time a song is loaded
 wavesurfer.on('ready', function () {
     buttons.playpause.disabled = false;
-    wavesurfer.zoom(50);
+    wavesurfer.setProgressColor("#415a77");
+    wavesurfer.setWaveColor("#778da9");
+    wavesurfer.setVolume(0.2);
 });
 
 // Forward button
