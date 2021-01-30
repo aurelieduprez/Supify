@@ -84,7 +84,7 @@ namespace Supify.Controllers
             return Redirect("/Player");
         }
 
-        [HttpGet, Route("player")]
+        [HttpGet, Route("Player")]
         public IActionResult Player()
         {
             // Retrive all user's playlist from the database
