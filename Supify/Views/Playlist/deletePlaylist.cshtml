@@ -1,9 +1,30 @@
 ﻿@model Supify.Models.Playlist
 @{
     ViewData["Title"] = "Add Playlist";
-    var playlist = ViewData["Playlist"] as Playlist;
+
+    var playlists = ViewData["Playlists"] as List<Playlist>;
 }
 
 
 
 <h1 class="display-4"> Delete your playlists</h1>
+
+@if (playlists.Any())
+{
+<div class="playlists">
+    @foreach (var playlist in playlists)
+    {
+<form action="../Playlist/deletePlaylist" method="post">
+    <label for="Id">@playlist.Name</label>
+    <input style="display: none;" id="Id" name="Id" type="number" value="@playlist.Id">
+    <button type="submit">Delete</button>
+</form>}
+</div> }
+            else
+            {
+<div class="playlists">
+    <div class="playlist-empty">
+        <p>You don't have any playlist</p>
+        <a href="/add-playlist">Add a new playlist to yout profile!</a>
+    </div>
+</div>}

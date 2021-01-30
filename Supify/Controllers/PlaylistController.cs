@@ -74,7 +74,7 @@ namespace Supify.Controllers
 
 
         }
-        public IActionResult deletePlaylist()
+        public IActionResult deletePlaylist(Playlist playlist)
         {
 
             if (User.Identity.IsAuthenticated == false)
@@ -84,6 +84,13 @@ namespace Supify.Controllers
             }
             else
             {
+                _database.Playlist.Attach(playlist);
+                _database.Playlist.Remove(playlist);
+                _database.SaveChanges();
+
+                // Retrive all user's playlist from the database
+                var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name)).ToList();
+                ViewData["Playlists"] = playlists;
                 return View();
             }
 
