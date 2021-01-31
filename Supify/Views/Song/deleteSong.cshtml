@@ -14,6 +14,7 @@
 <div class="text-center">
     <form method="post">
         <label for="playlistId">Playlist:</label>
+        <!-- select of every playlist the user has, list of playlist is sent through songController-->
         <select id="playlistId" name="playlistId" type="number" class="custom-select" style="width:10%">
             @foreach (var playlist in playlists)
             {
@@ -21,6 +22,7 @@
         </select>
 
         <label for="Id">Song:</label>
+        <!-- select of every song the selected playlist has, they are sent by the songController-->
         <select id="Id" name="Id" type="number" class="custom-select" style="width:10%">
             @foreach (var song in songs)
             {
@@ -31,12 +33,13 @@
     </form>
 
 </div> }
+    <!-- if there is no playlist-->
             else
             {
 <div class="playlists">
-    <div class="playlist-empty">
-        <p>You don't have any playlist</p>
-        <a href="/Home/createPlaylist"><button class="btn btn-outline-dark">Add a song to a playlist</button></a>
+    <div class="text-center">
+        <p>You don't have any playlist currently</p>
+        <a asp-controller="Playlist" asp-action="createPlaylist"><button class="btn btn-outline-dark">Create your first Playlist ! </button></a>
     </div>
 </div>}
 

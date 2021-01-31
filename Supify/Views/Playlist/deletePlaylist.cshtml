@@ -4,14 +4,14 @@
     var playlists = ViewData["Playlists"] as List<Playlist>;
 }
 
-
+<!-- this view is a selector for which playlist to delete-->
 
 <h1 class="display-4 text-center"> Delete your playlists</h1>
 <br /><br /><br /><br />
 
 @if (playlists.Any())
 {
-<div class="text-center">
+<div class="text-center"><!-- displays every playlist sent by the controller, and makes a list ot of it (every following elements will be displayed for every playlist in the list-->
     @foreach (var playlist in playlists)
     {
 <form action="/Playlist/deletePlaylist" method="post">
@@ -21,6 +21,7 @@
     <br /><br/>
 </form>}
 </div> }
+<!-- if ther is no playlist, display there is nothing to delete & buttons to create one -->
             else
             {
 <div class="text-center">

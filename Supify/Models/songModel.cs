@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Supify.Models
 {
-    public class Song
+    public class Song // defines how every song will be (its composition)
     {
         public int Id { get; set; }
         public int PlaylistId { get; set; }

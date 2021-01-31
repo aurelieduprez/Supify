@@ -14,14 +14,16 @@ namespace Supify.Controllers
             _logger = logger;
         }
 
+        //
         public IActionResult Index()
         {
+            //if the user is connected, bring him to the /Home/manager view
             if (User.Identity.IsAuthenticated)
             {
                 return Redirect("/Home/Manager");
 
             }
-            else
+            else //if not, let him on the index view
             {
                 return View();
             }
@@ -31,7 +33,7 @@ namespace Supify.Controllers
         public IActionResult Manager()
         {
 
-            if (User.Identity.IsAuthenticated == false)
+            if (User.Identity.IsAuthenticated == false) //same system for each view, if not connected : you shall not pass
             {
                 return Redirect("/Home");
 
@@ -42,34 +44,7 @@ namespace Supify.Controllers
             }
 
         }
-        public IActionResult editPlaylist()
-        {
-
-            if (User.Identity.IsAuthenticated == false)
-            {
-                return Redirect("/Home");
-
-            }
-            else
-            {
-                return View();
-            }
-
-        }
-        public IActionResult deletePlaylist()
-        {
-
-            if (User.Identity.IsAuthenticated == false)
-            {
-                return Redirect("/Home");
-
-            }
-            else
-            {
-                return View();
-            }
-
-        }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -2,24 +2,25 @@
                 var playlists = ViewData["Playlists"] as List<Playlist>; }
 
 <div class="text-center">
-
+    <!-- this view is no longer linked to any button, but i kept it because it's useful-->
     <h1 class="display-4">Here are all of your playlists</h1> <br /><br /><br /><br />
+    
+    <!-- checks if the current user has any playlist-->
     @if (playlists.Any())
     {
-<div >
+<div>
     @foreach (var playlist in playlists)
     {
 <div>
-    <p class="p-2">@playlist.Id # @playlist.User # @playlist.Name</p>
-</div>                }
+    <p class="p-2">@playlist.Id #  @playlist.User - @playlist.Name</p>
+</div>          }
 </div> }
-            else
-            {
+else
+{
 
-    <div>
-        <p>You don't have any playlist</p>
-        <a href="createPlaylist"><button class="btn btn-outline-dark">Create a Playlist</button></a>
-    </div>
-}
+<div>
+    <p>You don't have any playlist</p>
+    <a href="createPlaylist"><button class="btn btn-outline-dark">Create a Playlist</button></a>
+</div>}
 
 </div>

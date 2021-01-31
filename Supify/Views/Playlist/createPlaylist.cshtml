@@ -5,7 +5,7 @@
 }
 
 
-
+<!-- this view is the form to create a playlist, thanks to the submit type button, it sends the inputs to the PlaylistController and deals every information to the db -->
 <h1 class="display-4 text-center">Create your own Playlist</h1>
 <br /><br /><br /><br />
                   <div>
@@ -15,15 +15,16 @@
                           {
                               <p>
                                   @Html.LabelFor(x => x.Name)
-                                  @Html.EditorFor(x => x.Name)
+                                  @Html.EditorFor(x => x.Name) <!-- name of the playlist-->
                               </p>
                               <p>
                                   <button type="submit" class="btn btn-outline-dark">Create your playlist</button>
                               </p>}
                       </fieldset>
-
+                      <!-- asp-controller choose the folder of the view and asp-action the specific view to display-->
                       <a asp-controller="Song" asp-action="addSong"><button class="btn btn-outline-dark">Add music to your playlist</button></a>
 
+                      <!-- if the name is blank, it won't register the playlist in db, so it shouldn't display the message below-->
                       @if (playlist.Name != null)
                       {
                           <div class="text-center">

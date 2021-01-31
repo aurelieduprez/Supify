@@ -1,34 +1,39 @@
 ﻿
 @{ ViewData["Title"] = "Upload Song";
-                var playlists = ViewData["Playlists"] as List<Playlist>; }
+    var playlists = ViewData["Playlists"] as List<Playlist>; }
 
 
+<!-- this view is to add a song to a selected playlist-->
 
-
-    <h1 class="display-4 text-center">Add Song</h1> <br /><br /><br />
-    @if (playlists.Any())
-    {
+<h1 class="display-4 text-center">Add Song</h1>
+<br />
+<br />
+<br />
+@if (playlists.Any())
+{
 <div class="text-center">
     <form enctype="multipart/form-data" method="post">
         <label for="playlistId">Playlist:</label>
+        <!-- this is a select to select the proper playlist to add a song to-->
         <select id="playlistId" name="playlistId" type="number" class="custom-select" style="width:10%;">
             @foreach (var playlist in playlists)
             {
 <option value="@playlist.Id">@playlist.Name</option>}
         </select>
-
+        <!-- and this part is to add a song : name, file-->
         <label for="song">Song name:</label>
         <input type="text" name="name" id="name">
 
         <label for="song">Select song to upload:</label>
         <input type="file" name="file" id="file" class="btn">
-
+        <!-- send everything to the songController to create the song in db-->
         <button type="submit" class="btn btn-outline-dark">Add Song</button>
     </form>
 </div> }
-            else
-            {
-<p>To add a song you need a playlist!</p>
-                <a href="createPlaylist"></a>}
+
+else
+{ <!-- if there is no playlist to add anything to -->
+                <p>To add a song you need a playlist!</p>
+                                <a asp-controller="Playlist" asp-action="createPlaylist"><button class="btn btn-outline-dark">Create your first Playlist ! </button></a>}
 
 

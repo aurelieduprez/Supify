@@ -13,53 +13,38 @@ namespace Supify.Controllers
     public class PlaylistController : Controller
     {
         private readonly ApplicationDbContext _database;
-        public PlaylistController(ApplicationDbContext database)
+        public PlaylistController(ApplicationDbContext database)  //fetch db context in _database
         {
             _database = database;
         }
 
- /*       [HttpGet, Route("createPlaylist")]
-        public IActionResult createPlaylist()
+        // post request to create a playlist
+        public IActionResult createPlaylist(Playlist playlist) //with the model Playlist as an argument
         {
 
-            if (User.Identity.IsAuthenticated == false)
+            if (User.Identity.IsAuthenticated == false) // if the user is not connected, don't go further
             {
                 return Redirect("/Home");
 
             }
             else
             {
-                return View();
-            }
-
-        }
-
-        [HttpPost, Route("createPlaylist")]*/
-        public IActionResult createPlaylist(Playlist playlist)
-        {
-
-            if (User.Identity.IsAuthenticated == false)
-            {
-                return Redirect("/Home");
-
-            }
-            else
-            {
-                if (playlist.Name != null) 
+                if (playlist.Name != null) //checks if the name is not null
                 { 
-                playlist.User = User.Identity.Name;
-                _database.Playlist.Add(playlist);
-                _database.SaveChanges();
+                playlist.User = User.Identity.Name; //catches info about user 
+                _database.Playlist.Add(playlist);  // adds the playlist to db
+                _database.SaveChanges();           // makes sure to save changes in db 
                 }
 
-            ViewData["Playlist"] = playlist;
+            ViewData["Playlist"] = playlist; //send this var to the view, so we can use it there
 
                 return View();
             }
 
         }
         
-        public IActionResult deletePlaylist(Playlist playlist)
+        //post requets to delete a playlist
+        public IActionResult deletePlaylist(Playlist playlist) //same argument
         {
 
             if (User.Identity.IsAuthenticated == false)
@@ -69,19 +54,19 @@ namespace Supify.Controllers
             }
             else
             {
-                _database.Playlist.Attach(playlist);
-                _database.Playlist.Remove(playlist);
-                _database.SaveChanges();
+                _database.Playlist.Attach(playlist); //fetch the concerned playlist
+                _database.Playlist.Remove(playlist);  // and remove it
+                _database.SaveChanges();            // save the changes
 
-                // Retrive all user's playlist from the database
+                // fectch from db every playlists belonging to this user, after removing the one above, it's like a refresh
                 var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name)).ToList();
-                ViewData["Playlists"] = playlists;
-                return View();
+                ViewData["Playlists"] = playlists;  //sends var to view
+                return View();      // and return the view with the same name as this function since there is not argument (deletePlaylist)
             }
 
 
         }
-        public IActionResult allPlaylist(Playlist playlist)
+        public IActionResult allPlaylist(Playlist playlist) //same argument
         {
 
             if (User.Identity.IsAuthenticated == false)
@@ -91,6 +76,7 @@ namespace Supify.Controllers
             }
             else
             {
+                //fetch every playlist from this user, this route is no longer used but useful
                 var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name)).ToList();
                 ViewData["Playlists"] = playlists;
                 return View();

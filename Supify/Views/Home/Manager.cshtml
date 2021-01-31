@@ -1,13 +1,12 @@
 ﻿@{
-    ViewData["Title"] = "Music player";
+    ViewData["Title"] = "Supify - Manager";
 }
 <head>
     <script src="https://unpkg.com/wavesurfer.js"></script>
     <script src="~/js/site.js"></script>
-    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 
-
+<!-- this is the manager view, where you can CRUD a playlist or manage the songs -->
 <div class="text-center" id="index_page">
     <h1 class="display-4">Welcome to Supify</h1>
     <br /><br /><br /><br />
@@ -16,12 +15,6 @@
     <a asp-controller="Playlist" asp-action="createPlaylist"><button class="btn btn-outline-dark">Create a Playlist</button></a>
     <a asp-controller="Playlist" asp-action="deletePlaylist"><button class="btn btn-outline-dark">Delete a Playlist</button></a>
 
-
-    <!--switch dark theme
-    <label class="switch">
-        <input id="switch" type="checkbox">
-        <span class="slider round"></span>
-    </label> -->
     <br /><br />
 
 
@@ -31,7 +24,7 @@
 
 
     <br /><br /><br /><br />
-    <img src="~/thanos.gif" width="20%" />
+    <img src="~/thanos.gif" width="20%" /> <!-- cool, right ?-->
 
 
 
