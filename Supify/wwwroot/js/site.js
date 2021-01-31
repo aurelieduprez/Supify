@@ -22,11 +22,10 @@ var isPlaying = false;
 var wavesurfer = WaveSurfer.create({
     container: '#waveform',
     barWidth: 5,
-    barRadius: 5,
+    barRadius: 1,
     cursorWidth: 0,
     height: 200,
-    hideScrollbar: true,
-    partialRender: true
+    hideScrollbar: true
 });
 
 
@@ -64,6 +63,7 @@ wavesurfer.on('ready', function () {
     wavesurfer.setProgressColor("#415a77");
     wavesurfer.setWaveColor("#778da9");
     wavesurfer.setVolume(0.2);
+    wavesurfer.zoom(1);
 });
 
 
