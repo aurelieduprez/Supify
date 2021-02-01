@@ -112,3 +112,19 @@ playlistSelect.onchange = function () {
         })
         .catch(error => console.log('error', error));
 }
+
+
+function toggleTheme() {
+    // Obtains an array of all <link> 
+    // elements. 
+    // Select your element using indexing. 
+    var theme = document.getElementById('themes');
+
+    // Change the value of href attribute  
+    // to change the css sheet. 
+    if (theme.getAttribute('href') == '../css/light.css') {
+        theme.setAttribute('href', '../css/dark.css');
+    } else {
+        theme.setAttribute('href', '../css/light.css');
+    }
+} 

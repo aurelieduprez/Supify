@@ -6,12 +6,14 @@
     <title>@ViewData["Title"] - Supify</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/light.css" id="themes" />
 </head>
 <!-- the layout view defines what will be displayed on every view, like the nav bar on top and elements in the footer-->
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
+                <button class="btn btn-outline-dark" style="margin:15px; font-size:large" onclick="toggleTheme()">☼</button>
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Supify</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -24,11 +26,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Song" asp-action="Player">Music Player</a>
                         </li>
+                        <li>                </li>
 
 
                     </ul>
-                    </div>
                 </div>
+            </div>
             </nav>
         </header>
         <div class="container">
