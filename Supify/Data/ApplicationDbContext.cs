@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Supify.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Supify.Data
 {
@@ -45,17 +46,57 @@ namespace Supify.Data
 
             });
 
+
+
             modelBuilder.Entity<Song>(n =>
             {
                 // clé primaire
                 n.HasKey(p => p.Id);
 
-                // id auto_increment non null
+                // playlist id foreign key
                 n.Property(f => f.Id).ValueGeneratedOnAdd();
 
                 // taille maxi
                 n.Property(p => p.Name).HasMaxLength(64);
             });
+
+
+            modelBuilder.Entity<Playlist>().HasData(
+                new Playlist
+                {
+                    Id = 3,
+                    User = "999",
+                    Name = "All time favorites"
+                }
+
+                );
+
+           modelBuilder.Entity<Song>().HasData(
+                new Song
+                {
+                    Id = 3,
+                    PlaylistId = 3,
+                    Name = "the Weeknd - Save your Tears"
+                },
+                            new Song
+                            {
+                                Id = 4,
+                                PlaylistId = 3,
+                                Name = "Yazoo - Only You"
+                            },
+                                        new Song
+                                        {
+                                            Id = 5,
+                                            PlaylistId = 3,
+                                            Name = "JOJI - DANCING IN THE DARK"
+                                        }
+
+                );
+
+
+
+ 
+
         }
     }
 }

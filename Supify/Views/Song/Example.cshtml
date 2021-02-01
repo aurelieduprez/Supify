@@ -1,0 +1,67 @@
+﻿@model Supify.Models.Playlist
+@{ ViewData["Title"] = "Player";
+                var playlists = ViewData["Playlists"] as List<Playlist>;
+                var songs = ViewData["songs"] as List<Song>; }
+
+
+
+<!--this view is the music player-->
+
+<h1 class="display-4 text-center">Player</h1>
+<br /><br /><br /><br />
+<div class="text-center">
+    <div id="waveform"> </div>
+
+
+
+    <!--this is all of the control buttons-->
+    <div>
+        <button class=" btn btn-outline-dark" id="btn-back" disabled="disabled">Back</button>
+        <button class=" btn btn-outline-dark" id="btn-backward" disabled="disabled"><img src="~/backward.png" alt="backward" width="20px" height="20px" style="padding:0px;" /></button>
+        <button class="btn btn-outline-dark" id="btn-playpause" disabled="disabled"><img src="~/pause.png" alt="pause" width="20px" height="20px" style="padding:0px;" /></button>
+        <button class="btn btn-outline-dark" id="btn-forward" disabled="disabled"><img src="~/forward.png" alt="forward" width="20px" height="20px" style="padding:0px;" /></button>
+        <button class="btn btn-outline-dark" id="btn-next" disabled="disabled">Next</button>
+        <button class =" btn btn-outline-dark"width="5%" height="5%" id="btn-mute"><img src="~/mute.png" alt="mute" width="20px" height="20px"style="padding:0px;" /></button>
+    </div>
+    <div class="volbox">
+        <br /><br />
+        <img src="~/sound.png" alt="Volume :" width="30px" height="30px" />
+        <br />
+        <input id="volume" class="custom-range" style="width:20%;" type="range" min="0" max="0.5" step="0.05">
+    </div>
+</div>
+
+<div class="text-center">
+    <div> <!-- playlist selector-->
+        <br /><br /><br />
+        <p style="font-size:x-large;"><u>Playlist: </u></p>
+
+            @foreach (var playlist in playlists)
+            {
+                <b><p>@playlist.Name</p></b>
+            }
+<br /><br />
+    </div>
+
+    <!-- unordered list of every song of the selected playlist-->
+    <ul id="songs">
+        @foreach (var song in songs)
+        {
+            <li style="list-style-type: none;">
+                <p class="name">
+                    @song.Name
+                    <button class="btn btn-outline-dark" onclick="loadToPlayer('@song.Path')">Load</button>
+                    <!-- you have to load it to send it to the waveform container-->
+                </p>
+            </li>
+
+            <br />
+        }
+    </ul>
+</div>
+
+
+<script src="https://unpkg.com/wavesurfer.js"></script>
+
+
+

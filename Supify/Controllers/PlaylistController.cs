@@ -58,7 +58,7 @@ namespace Supify.Controllers
                 _database.Playlist.Remove(playlist);  // and remove it
                 _database.SaveChanges();            // save the changes
 
-                // fectch from db every playlists belonging to this user, after removing the one above, it's like a refresh
+                // fetch from db every playlists belonging to this user, after removing the one above, it's like a refresh
                 var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name)).ToList();
                 ViewData["Playlists"] = playlists;  //sends var to view
                 return View();      // and return the view with the same name as this function since there is not argument (deletePlaylist)

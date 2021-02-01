@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Supify - Manager";
+    ViewData["Title"] = "Manager";
 }
 <head>
     <script src="https://unpkg.com/wavesurfer.js"></script>
@@ -21,9 +21,9 @@
     <a asp-controller="Song" asp-action="addSong"><button class="btn btn-outline-dark">Add a song to a playlist</button></a>
     <a asp-controller="Song" asp-action="Player"><button class="btn btn-outline-dark">Listen to one of your playlists</button></a>
     <a asp-controller="Song" asp-action="deleteSong"><button class="btn btn-outline-dark">Remove a song from a playlist</button></a>
-
-
-    <br /><br /><br /><br />
+    <br /><br />
+    <a asp-controller="Song" asp-action="Example"><button class="btn btn-outline-dark">See our example playlist</button></a>
+    <br /><br /><br />
     <img src="~/thanos.gif" width="20%" /> <!-- cool, right ?-->
 
 

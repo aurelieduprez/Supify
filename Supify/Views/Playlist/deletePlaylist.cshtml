@@ -21,10 +21,11 @@
     <br /><br/>
 </form>}
 </div> }
-<!-- if ther is no playlist, display there is nothing to delete & buttons to create one -->
+
             else
             {
 <div class="text-center">
+    <!-- if there is no playlist, display there is nothing to delete & buttons to create one -->
     <div class="playlist-empty">
         <p>You don't have any playlist :(</p>
         <a asp-controller="Playlist" asp-action="createPlaylist"><button class="btn btn-outline-dark">Create your first Playlist ! </button></a>

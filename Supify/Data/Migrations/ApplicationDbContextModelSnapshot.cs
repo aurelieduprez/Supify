@@ -236,6 +236,14 @@ namespace Supify.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Playlist");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 3,
+                            Name = "All time favorites",
+                            User = "999"
+                        });
                 });
 
             modelBuilder.Entity("Supify.Models.Song", b =>
@@ -260,6 +268,26 @@ namespace Supify.Data.Migrations
                     b.HasIndex("PlaylistId");
 
                     b.ToTable("Song");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 3,
+                            Name = "the Weeknd - Save your Tears",
+                            PlaylistId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Yazoo - Only You",
+                            PlaylistId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "JOJI - DANCING IN THE DARK",
+                            PlaylistId = 3
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
