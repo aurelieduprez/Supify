@@ -62,7 +62,15 @@ namespace Supify.Controllers
             //fetch every playlists of this user
             var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name)).ToList();
             //fetch every songs of this user
-            var songs = _database.Song.Where(song => song.PlaylistId.Equals(playlists[0].Id)).ToList();
+            List<Song> songs;
+            if (playlists.Count > 0) {            
+                songs = _database.Song.Where(song => song.PlaylistId.Equals(playlists[0].Id)).ToList(); 
+            }
+            else
+            {
+                songs = new List<Song>() ; 
+            }
+
 
             ViewData["Playlists"] = playlists;  //send every playlist var to the view
             ViewData["Songs"] = songs;          //send every song frome every playlist of this user to the view
@@ -89,7 +97,7 @@ namespace Supify.Controllers
         public IActionResult Player()
         {
             //get all playlist of this user
-            var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name) || playlist.Id == 3 ).ToList();
+            var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name) ).ToList();
             //get all songs from every playlist of this user
             var songs = _database.Song.Where(song => song.PlaylistId.Equals(playlists[0].Id)).ToList();
             //send the playlists and songs to the view
@@ -105,7 +113,7 @@ namespace Supify.Controllers
             //get this playlist's content
             var playlists = _database.Playlist.Where(playlist => playlist.Id.Equals(3)).ToList();
             //get all songs from this playlist 
-            var songs = _database.Song.Where(song => song.PlaylistId.Equals(playlists[0].Id)).ToList();
+            var songs = _database.Song.Where(song => song.PlaylistId.Equals(3)).ToList();
             //send the playlist and songs to the view
             ViewData["Playlists"] = playlists;
             ViewData["Songs"] = songs;

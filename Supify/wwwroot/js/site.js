@@ -88,7 +88,7 @@ playlistSelect.onchange = function () {
     }
 
     // list of songs, will fetch the songs of the playlist with its id, and put it in a json
-    fetch(`/get-songs?id=${playlistId}`, { method: 'GET' })
+    fetch(`/get-songs?id=${get-playlistId}`, { method: 'GET' })
         .then(response => response.json()) 
         .then(result => {
             result.value.forEach(song => //Decompose the json into each song 
