@@ -99,7 +99,15 @@ namespace Supify.Controllers
             //get all playlist of this user
             var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name) ).ToList();
             //get all songs from every playlist of this user
-            var songs = _database.Song.Where(song => song.PlaylistId.Equals(playlists[0].Id)).ToList();
+            List<Song> songs;
+            if (playlists.Count > 0)
+            {
+                songs = _database.Song.Where(song => song.PlaylistId.Equals(playlists[0].Id)).ToList();
+            }
+            else
+            {
+                songs = new List<Song>();
+            }
             //send the playlists and songs to the view
             ViewData["Playlists"] = playlists;
             ViewData["Songs"] = songs;
@@ -107,17 +115,5 @@ namespace Supify.Controllers
         }
 
 
-        [HttpGet, Route("Example")]
-        public IActionResult Example()
-        {
-            //get this playlist's content
-            var playlists = _database.Playlist.Where(playlist => playlist.Id.Equals(3)).ToList();
-            //get all songs from this playlist 
-            var songs = _database.Song.Where(song => song.PlaylistId.Equals(3)).ToList();
-            //send the playlist and songs to the view
-            ViewData["Playlists"] = playlists;
-            ViewData["Songs"] = songs;
-            return View();
-        }
     }
 }
