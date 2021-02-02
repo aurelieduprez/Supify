@@ -85,5 +85,32 @@ namespace Supify.Controllers
 
 
         }
+
+        [HttpGet, Route("get-songs")]
+        public IActionResult Get(string id)
+        {
+            // Check if we get a playlist
+            try
+            {
+                var playlist = _database.Playlist.First(p => p.Id == Int32.Parse(id));
+                if (playlist != null)
+                {
+                    var songs = _database.Song.Where(song => song.PlaylistId.Equals(playlist.Id));
+                    if (songs.Any())
+                    {
+                        return Ok(Json(songs));
+                    }
+                    else
+                    {
+                        return NotFound("empty");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return NotFound("playlist does not exists");
+            }
+            return NotFound();
+        }
     }
 }

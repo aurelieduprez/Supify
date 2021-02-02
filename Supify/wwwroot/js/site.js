@@ -76,7 +76,7 @@ function loadToPlayer(path) {
     wavesurfer.load(path);
 }
 
-// load songs from playlist
+// if playlist id is changed
 playlistSelect.onchange = function () {
     var playlistId = this.value;
     // to know which song is selected
@@ -88,7 +88,7 @@ playlistSelect.onchange = function () {
     }
 
     // list of songs, will fetch the songs of the playlist with its id, and put it in a json
-    fetch(`/get-songs?id=${get-playlistId}`, { method: 'GET' })
+fetch(`/get-songs?id=${playlistId}`, { method: 'GET' })
         .then(response => response.json()) 
         .then(result => {
             result.value.forEach(song => //Decompose the json into each song 
@@ -103,6 +103,7 @@ playlistSelect.onchange = function () {
 
                 button.addEventListener("click", () => { loadToPlayer(song.path) });
                 button.innerText = 'Load';
+                button.className = 'btn btn-outline-dark'
 
                 li.appendChild(p);
                 li.appendChild(button);

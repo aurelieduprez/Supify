@@ -99,15 +99,16 @@ namespace Supify.Controllers
             //get all playlist of this user
             var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name) ).ToList();
             //get all songs from every playlist of this user
-            List<Song> songs;
+            var songs = _database.Song.Where(song => song.PlaylistId.Equals(playlists[0].Id)).ToList();
+            /*List<Song> songs;
             if (playlists.Count > 0)
             {
-                songs = _database.Song.Where(song => song.PlaylistId.Equals(playlists[0].Id)).ToList();
+
             }
             else
             {
                 songs = new List<Song>();
-            }
+            }*/
             //send the playlists and songs to the view
             ViewData["Playlists"] = playlists;
             ViewData["Songs"] = songs;
