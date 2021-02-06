@@ -90,7 +90,7 @@ namespace Supify.Controllers
                 _database.SaveChanges();     //save changes in db
             
 
-            return Redirect("/Player"); //once it's done return to the player view
+            return Redirect("/Home"); //once it's done return to the player view
         }
 
         [HttpGet, Route("Player")]
@@ -99,16 +99,16 @@ namespace Supify.Controllers
             //get all playlist of this user
             var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name) ).ToList();
             //get all songs from every playlist of this user
-            var songs = _database.Song.Where(song => song.PlaylistId.Equals(playlists[0].Id)).ToList();
-            /*List<Song> songs;
+            
+            List<Song> songs;
             if (playlists.Count > 0)
             {
-
+                songs = _database.Song.Where(song => song.PlaylistId.Equals(playlists[0].Id)).ToList();
             }
             else
             {
                 songs = new List<Song>();
-            }*/
+            }
             //send the playlists and songs to the view
             ViewData["Playlists"] = playlists;
             ViewData["Songs"] = songs;

@@ -88,7 +88,34 @@ body {
 }
 
 
+/* things to activate for dark mode
+.bg-white {
+    background-color: dimgrey !important;
+    color: antiquewhite !important;
+}
 
+
+* {
+    color: antiquewhite !important;
+}
+
+.text-dark {
+    color: antiquewhite !important;
+}
+
+body {
+    background-image: url(../background1.png) !important;
+}
+
+.footer {
+    background-color: dimgrey !important;
+}
+
+option {
+    color: black !important;
+}
+
+*/
 
 
 

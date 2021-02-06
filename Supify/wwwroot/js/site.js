@@ -88,20 +88,20 @@ playlistSelect.onchange = function () {
     }
 
     // list of songs, will fetch the songs of the playlist with its id, and put it in a json
-fetch(`/get-songs?id=${playlistId}`, { method: 'GET' })
+fetch(`/get-songs?id=${playlistId}`, { method: 'GET' }) //using my get request in the playlistController to get the right songs
         .then(response => response.json()) 
         .then(result => {
             result.value.forEach(song => //Decompose the json into each song 
             {
 
-                var li = document.createElement("li");
+                var li = document.createElement("li"); //this are the elements in the HTML to add for each song to make a list out of them
                 var p = document.createElement("p");
                 var button = document.createElement("button");
 
                 p.className = 'name';
                 p.innerText = song.name;
 
-                button.addEventListener("click", () => { loadToPlayer(song.path) });
+                button.addEventListener("click", () => { loadToPlayer(song.path) }); //using the function declared higher here loadToPlayer
                 button.innerText = 'Load';
                 button.className = 'btn btn-outline-dark'
 
@@ -114,18 +114,13 @@ fetch(`/get-songs?id=${playlistId}`, { method: 'GET' })
         .catch(error => console.log('error', error));
 }
 
-
-function toggleTheme() {
-    // Obtains an array of all <link> 
-    // elements. 
-    // Select your element using indexing. 
-    var theme = document.getElementById('themes');
-
-    // Change the value of href attribute  
-    // to change the css sheet. 
-    if (theme.getAttribute('href') == '../css/light.css') {
-        theme.setAttribute('href', '../css/dark.css');
+var addstyle = true; //this is a failed attempt on dark mode
+$('#switch').on("click", function addorremovesheet() {
+    if (addstyle == true) {
+        $('head').append('<link rel="stylesheet" href="~/css/dark.css" type="text/css" />');
+        var addstyle = 'false';
     } else {
-        theme.setAttribute('href', '../css/light.css');
+        $('link[rel=stylesheet][href~="~/css/dark.css"]').remove();
+        var addstyle = 'true';
     }
-} 
+});
