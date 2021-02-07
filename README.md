@@ -5,7 +5,7 @@
 ## **Instructions to execute this project :** ##
 
 
-In the powershell developer tab/console, execute the following lines : 
+In the powershell developer tab/console, execute the following lines in the directory **\Supify\Supify>**
 1. dotnet tool install --global dotnet-ef
 1. dotnet ef migrations add finalCreate
 1. dotnet ef database update
