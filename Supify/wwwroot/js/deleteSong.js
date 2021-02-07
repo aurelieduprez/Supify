@@ -2,19 +2,18 @@
 var songSelect = document.getElementById('Id');
 
 playlistSelect.onchange = function () {
-    // Retrive the playlist id
+//from the playlistid...
     var playlistId = this.value;
 
-    // Empty the song select
+// empties the song selection if needed
     while (songSelect.options.length > 0) {
         songSelect.remove(0);
     }
 
-    // Put new items into the song select
+    // fetch corresponding songs
     fetch(`/get-songs?id=${playlistId}`, { method: 'GET' })
         .then(response => response.json())
         .then(result => {
-            console.log(result);
             result.value.forEach(song => {
 
                 var option = document.createElement("option");

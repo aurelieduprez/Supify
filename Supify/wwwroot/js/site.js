@@ -101,7 +101,7 @@ fetch(`/get-songs?id=${playlistId}`, { method: 'GET' }) //using my get request i
                 p.className = 'name';
                 p.innerText = song.name;
 
-                button.addEventListener("click", () => { loadToPlayer(song.path) }); //using the function declared higher here loadToPlayer
+                button.addEventListener("click", () => { loadToPlayer(song.path) }); //using the function declared above here loadToPlayer
                 button.innerText = 'Load';
                 button.className = 'btn btn-outline-dark'
 
