@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Supify.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
 
 namespace Supify.Controllers
 {
@@ -51,5 +52,24 @@ namespace Supify.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        public ActionResult onChange()
+        {
+            if (DarkTheme.isOn == true)
+            {
+                DarkTheme.isOn = false;
+            }
+            else
+            {
+                DarkTheme.isOn = true;
+            }
+
+            return Redirect(Request.Headers["Referer"].ToString());
+        }
     }
+
+
+
+
 }

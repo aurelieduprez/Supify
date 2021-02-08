@@ -114,13 +114,13 @@ fetch(`/get-songs?id=${playlistId}`, { method: 'GET' }) //using my get request i
         .catch(error => console.log('error', error));
 }
 
-var addstyle = true; //this is a failed attempt on dark mode
-$('#switch').on("click", function addorremovesheet() {
-    if (addstyle == true) {
-        $('head').append('<link rel="stylesheet" href="~/css/dark.css" type="text/css" />');
-        var addstyle = 'false';
-    } else {
-        $('link[rel=stylesheet][href~="~/css/dark.css"]').remove();
-        var addstyle = 'true';
-    }
-});
+//this is a failed attempt on dark mode
+$('#switch').click(
+    () => {   
+    location.reload();}
+
+
+    
+);
+
+

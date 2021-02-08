@@ -97,7 +97,7 @@ namespace Supify.Controllers
         public IActionResult Player()
         {
             //get all playlist of this user
-            var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name) || playlist.Id == 3 ).ToList();
+            var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name)).ToList();
             //get all songs from every playlist of this user
             
             List<Song> songs;
